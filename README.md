@@ -24,3 +24,5 @@ A package to aid in creating, organizing, and editing notes!
 
 - [ ] Write the wiki
     - [ ] title
+
+# License

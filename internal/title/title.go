@@ -23,13 +23,13 @@ func Titleify(s string) {
 
 	err := titleify(s, &b)
 	if err != nil { // if there is an error, just print the input back out
-		fmt.Printf("%v\n", s)
+		fmt.Println(s)
 	}
 
-	fmt.Printf("%v\n", b.String())
+	fmt.Println(b.String())
 }
 
-func Run(args []string) {
+func Run(args []string, languageFlag string) {
 	var s string
 	var err error
 
