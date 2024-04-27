@@ -10,9 +10,9 @@ A package to aid in creating, organizing, and editing notes!
 
 # Todo
 - [ ] Zettelkasten Functionality
-    - [ ] automated note creation
+    - [x] automated note creation
         - [ ] metadata
-        - [ ] from within neovim as well
+        - [x] from within neovim as well
 
 - [ ] Text Manipulation
     - [ ] title
@@ -24,5 +24,7 @@ A package to aid in creating, organizing, and editing notes!
 
 - [ ] Write the wiki
     - [ ] title
+    - [ ] date
+    - [ ] zettel
 
 # License

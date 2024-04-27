@@ -7,39 +7,43 @@ import (
 	"strings"
 
 	"github.com/daneofmanythings/notes-utilities/internal/static"
-	"github.com/daneofmanythings/notes-utilities/internal/utils"
 )
 
-func Run() {
-	zetName := utils.GetInput("What is the zettel about: ")
-
-	// set up path for zettel
+func Run(zetArgs []string) {
 	zetPath := os.Getenv("ZETTEL")
 	if zetPath == "" {
 		home := os.Getenv("HOME")
 		zetPath = filepath.Join(home, "notes", "zettel")
 	}
 
-	// adding the filetype and constructing the path
-	fileName := genFileName(zetName)
+	fileName := genFileName(zetArgs)
 	fullPath := filepath.Join(zetPath, fileName)
 
-	// create file if it does not exist
 	createFile(fullPath)
 
-	// echo back the file path
-	fmt.Println(fullPath)
+	fmt.Println(fullPath) // the full path is returned to be piped.
+}
+
+func genFileName(args []string) string {
+	normArgs := normalizeArgs(args)
+	normArgs = append(normArgs, "md")
+	return strings.Join(normArgs, ".")
+}
+
+// Checks if the input has any spaces in it and replaces it with '.'
+// When called from the command line, there will be no spaces, and when called fromve
+// vim, there will be, but args will be a slice of one. If for some reason, len(args) > 1
+// and args[0] has a " ", args[1:] will be ignored.
+func normalizeArgs(args []string) []string {
+	if strings.Contains(args[0], " ") {
+		return strings.Split(args[0], " ")
+	}
+	return args
 }
 
 func createFile(path string) {
 	_, err := os.Stat(path)
 	if err != nil {
-		os.WriteFile(path, static.NewZettel, 0644)
+		os.WriteFile(path, static.NewZettel, static.NotePerms)
 	}
-}
-
-func genFileName(s string) string {
-	ss := strings.Split(s, " ")
-	ss = append(ss, "md")
-	return strings.Join(ss, ".")
 }

@@ -1,7 +1,6 @@
 package title
 
 import (
-	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -12,28 +11,16 @@ import (
 	"golang.org/x/text/language"
 )
 
-func titleify(as string, b *bytes.Buffer) error {
+func titleify(s string) string {
 	t := cases.Title(language.English)
-	_, err := b.WriteString(t.String(as))
-	return err // always nil. pretending it isn't
-}
+	S := t.String(s)
 
-func Titleify(s string) {
-	var b bytes.Buffer
-
-	err := titleify(s, &b)
-	if err != nil { // if there is an error, just print the input back out
-		fmt.Println(s)
-	}
-
-	fmt.Println(b.String())
+	return S
 }
 
 func Run(args []string, languageFlag string) {
 	var s string
 	var err error
-
-	// TODO: add language flag
 
 	if len(args) > 0 {
 		s = strings.Join(args, " ")
@@ -46,5 +33,6 @@ func Run(args []string, languageFlag string) {
 		return
 	}
 
-	Titleify(s)
+	// TODO: incorporate language flag
+	fmt.Println(titleify(s))
 }

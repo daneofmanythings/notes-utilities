@@ -22,7 +22,7 @@ func main() {
 		// log.Println(*dateFormatFlag)
 		date.Run(args)
 	case zetFlag:
-		zettel.Run()
+		zettel.Run(args)
 	default:
 		displayHelp()
 	}

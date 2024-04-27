@@ -1,7 +1,6 @@
 package title
 
 import (
-	"bytes"
 	"testing"
 )
 
@@ -18,9 +17,7 @@ func TestTitleify(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			var b bytes.Buffer
-			titleify(tc.input, &b)
-			output := b.String()
+			output := titleify(tc.input)
 			if output != tc.expected {
 				t.Fatalf("expected=%s, got=%s", tc.expected, output)
 			}
