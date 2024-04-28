@@ -6,16 +6,16 @@ A package to aid in creating, organizing, and editing notes!
 
 - Install [Go](https://go.dev/doc/install)
 - Run `make install` to install a local copy of the binary
-- Run `nutils` for an introduction to the commands.
+- Run `nutils` for an introduction to the commands. (WIP)
 
 # Todo
 - [ ] Zettelkasten Functionality
     - [x] automated note creation
         - [ ] metadata
-        - [x] from within neovim as well
+        - [x] neovim compatibility (vimscript)
 
 - [ ] Text Manipulation
-    - [ ] title
+    - [x] title
         - [ ] language flag
     - [ ] checkbox
         - [ ] cascading
